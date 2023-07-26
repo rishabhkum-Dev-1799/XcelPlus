@@ -5,9 +5,11 @@
 body {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
 }
 
-/* layer 1  */
+/* page-actions */
 .page-action-cont {
     height: 3rem;
     background-color: #218c74;
@@ -16,32 +18,7 @@ body {
     overflow: hidden;
 }
 
-.cell-action-cont {
-    height: 3rem;
-    background-color: lightcoral;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-
-.formula-bar-cont {
-    height: 3rem;
-    background-color: lightslategray;
-}
-
-.sheet-cont {
-    height: 3rem;
-    background-color: lightpink;
-}
-
-.grid-cont {
-    height: calc(100vh - 3rem - 3rem - 3rem - 3rem);
-}
-
-/* Layer 2 css */
-/* Page actions css */
 .page-action-wrapper {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -58,8 +35,16 @@ body {
     cursor: pointer;
 }
 
+/*  cell actions */
+.cell-action-cont {
+    height: 3rem;
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
 .cell-action-wrapper {
-    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -90,4 +75,167 @@ body {
 
 .font-size-prop {
     padding: 0.2rem;
+}
+
+/* formula bar styles */
+.formula-bar-cont {
+    height: 2rem;
+    background-color: #ecf0f1;
+}
+
+.formula-bar-wrapper {
+    height: inherit;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 0 1rem;
+}
+
+.formula-icon-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2%;
+    overflow: hidden;
+}
+
+.cell-address-bar {
+    width: 5%;
+    padding: 0.2rem;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-weight: 600;
+}
+
+.cell-formula-bar {
+    width: 93%;
+    padding: 0.2rem;
+    outline: none;
+    border: none;
+}
+
+
+/* grid styles */
+.grid-cont {
+    height: calc(100vh - 3rem - 3rem - 2rem - 3rem);
+    position: relative;
+    overflow: scroll;
+    background-color: #ecf0f1;
+}
+
+.dummy-cell {
+    width: 2rem;
+    height: 2rem;
+    background-color: gainsboro;
+    position: fixed;
+    z-index: 1;
+}
+
+.address-row-cont {
+    position: sticky;
+    left: 0;
+    top: 2rem;
+    background-color: #ecf0f1;
+
+}
+
+.address-row {
+    width: 2rem;
+    height: 2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px #dfe4ea solid;
+}
+
+.cell-cont {
+    position: absolute;
+    top: 0;
+    left: 2rem;
+}
+
+.address-col-cont {
+    position: sticky;
+    top: 0rem;
+    left: 2rem;
+    display: flex;
+    overflow: hidden;
+    background-color: #ecf0f1;
+}
+
+
+
+.address-col {
+    width: 5rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px #dfe4ea solid;
+    font-weight: 600;
+}
+
+.cell-row {
+    display: flex;
+}
+
+.cell {
+    width: 5rem;
+    height: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 1px #dfe4ea solid;
+    outline: none;
+}
+
+/* Sheet container styles */
+.sheet-cont {
+    height: 3rem;
+    background-color: #ecf0f1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.sheet-cont-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    margin: 0 1rem;
+}
+
+.sheet-add-icon {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.sheet-add-icon:hover {
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.sheet-add-icon>span {
+    font-size: 26px;
+
+}
+
+.sheet-folder-cont {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.sheet-folder {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0.2rem;
+    cursor: pointer;
 }
