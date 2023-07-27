@@ -77,6 +77,18 @@ body {
     padding: 0.2rem;
 }
 
+.color-picker-cont {
+    position: relative;
+}
+
+.color-picker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
 /* formula bar styles */
 .formula-bar-cont {
     height: 2rem;
