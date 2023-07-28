@@ -202,6 +202,7 @@ body {
     align-items: center;
     border: 1px #dfe4ea solid;
     outline: none;
+    overflow: hidden;
 }
 
 /* Sheet container styles */
