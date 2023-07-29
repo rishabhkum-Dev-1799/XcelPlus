@@ -35,7 +35,9 @@ for (let i = 0; i < rows; i++) {
             bgColor: '#ecf0f1',
             fontSize: 16,
             fontFamily: 'monospace',
-            alignment: 'left'
+            alignment: 'left',
+            value: '', //current cell value
+            formula: '' //current cell formula
         }
         sheetRow.push(cellProps);
     }
@@ -158,6 +160,7 @@ function addListenertoAttachCellProperties(cells, currentCell) {
         const cid = currentCell.getAttribute('cid');
         const cellProp = exceldb[rid][cid];
         currentCell.style.border = '3px solid green'
+        formulaBar.value = cellProp.value;
         // bold property state 
         currentCell.style.fontWeight = cellProp.bold ? 'bold' : 'normal';
         bold.style.backgroundColor = cellProp.bold ? selectedProp : unselectedProp;

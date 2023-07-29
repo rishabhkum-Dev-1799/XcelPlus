@@ -6,7 +6,8 @@ let rows = 100;
 let addressColContainer = document.querySelector('.address-col-cont');
 let addressRowContainer = document.querySelector('.address-row-cont');
 let cellContainer = document.querySelector('.cell-cont');
-let addressInput = document.querySelector('.cell-address-bar');
+let addressInput = document.querySelector('.address-bar');
+const formulaBar = document.querySelector('.formula-bar');
 
 const addListenerForAddressBarDisplay = (cell, rowIndex, columnIndex) => {
     cell.addEventListener('click', (e) => {
