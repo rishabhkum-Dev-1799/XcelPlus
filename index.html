@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./style.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="//ssl.gstatic.com/docs/spreadsheets/favicon3.ico">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Xcel Plus</title>
@@ -19,7 +20,7 @@
             <div class="page-action">File</div>
             <div class="page-action">Insert</div>
             <div class="page-action">Page Layout</div>
-            <div class="page-action">Formualas</div>
+            <div class="page-action">Formulas</div>
             <div class="page-action">View</div>
             <div class="page-action">Help</div>
         </div>
@@ -56,13 +57,13 @@
             <span class="material-symbols-outlined underlined-prop">
                 format_underlined
             </span>
-            <span class="material-symbols-outlined aligned-prop">
+            <span class="left material-symbols-outlined aligned-prop">
                 format_align_left
             </span>
-            <span class="material-symbols-outlined aligned-prop">
+            <span class="center material-symbols-outlined aligned-prop">
                 format_align_center
             </span>
-            <span class="material-symbols-outlined aligned-prop">
+            <span class="right material-symbols-outlined aligned-prop">
                 format_align_right
             </span>
             <div class="color-picker-cont">
@@ -83,11 +84,11 @@
     </div>
     <div class="formula-bar-cont">
         <div class="formula-bar-wrapper">
-            <input type="text" class="cell-address-bar" readonly>
+            <input type="text" class="address-bar" readonly>
             <div class="formula-icon-cont">
                 <img width="20" height="20" src="https://img.icons8.com/ios/50/formula-fx.png" alt="formula-fx" />
             </div>
-            <input type="text" class="cell-formula-bar">
+            <input type="text" class="formula-bar" />
         </div>
     </div>
     <div class="grid-cont">
@@ -112,6 +113,7 @@
     </div>
     <script src="./index.js"></script>
     <script src="./cellproperties.js"></script>
+    <script src="./formula.js"></script>
 </body>
 
 </html>

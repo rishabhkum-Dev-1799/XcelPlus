@@ -6,13 +6,15 @@ let rows = 100;
 let addressColContainer = document.querySelector('.address-col-cont');
 let addressRowContainer = document.querySelector('.address-row-cont');
 let cellContainer = document.querySelector('.cell-cont');
-let addressInput = document.querySelector('.cell-address-bar');
+let addressInput = document.querySelector('.address-bar');
+const formulaBar = document.querySelector('.formula-bar');
 
 const addListenerForAddressBarDisplay = (cell, rowIndex, columnIndex) => {
     cell.addEventListener('click', (e) => {
         const rowNumber = rowIndex + 1;
         const columnName = String.fromCharCode(65 + columnIndex);
         addressInput.value = `${columnName}${rowNumber}`;
+        // cell border color
     })
 };
 for (let i = 0; i < rows; i++) {
@@ -44,4 +46,7 @@ for (let i = 0; i < rows; i++) {
     }
     cellContainer.appendChild(cellRow);
 }
+
+// const firstCell = document.querySelector(`.cell[rid=0][cid=0]`);
+// addListenerForAddressBarDisplay(firstCell, 0, 0);
 

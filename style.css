@@ -112,7 +112,7 @@ body {
     overflow: hidden;
 }
 
-.cell-address-bar {
+.address-bar {
     width: 5%;
     padding: 0.2rem;
     outline: none;
@@ -121,11 +121,13 @@ body {
     font-weight: 600;
 }
 
-.cell-formula-bar {
+.formula-bar {
     width: 93%;
     padding: 0.2rem;
     outline: none;
     border: none;
+    overflow: hidden;
+    resize: vertical
 }
 
 
