@@ -7,10 +7,10 @@ let paste = document.querySelector('.paste-prop');
 let bold = document.querySelector('.bold-prop');
 let italic = document.querySelector('.italic-prop');
 let underline = document.querySelector('.underlined-prop');
-let alignment = document.querySelectorAll('.alignment-prop');
+let alignment = document.querySelectorAll('.aligned-prop');
 let leftAlignment = alignment[0];
-let rightAlignment = alignment[1];
-let centerAlignment = alignment[2];
+let centerAlignment = alignment[1];
+let rightAlignment = alignment[2];
 let fontSize = document.querySelector('.font-size-prop');
 let fontFamily = document.querySelector('.font-family-prop');
 let fontColorPicker = document.querySelector('.font-color-picker');
@@ -32,7 +32,7 @@ for (let i = 0; i < rows; i++) {
             italic: false,
             underline: false,
             textColor: '#000000',
-            bgColor: '#000000',
+            bgColor: '#ecf0f1',
             fontSize: 16,
             fontFamily: 'monospace',
             alignment: 'left'
@@ -87,7 +87,7 @@ underline.addEventListener('click', (event) => {
     underline.style.backgroundColor = cellProp.underline ? selectedProp : unselectedProp;
 })
 // fontSize eventlister
-fontSize.addEventListener('click', (event) => {
+fontSize.addEventListener('change', (event) => {
     const address = addressInput.value;
     const { currentCell, cellProp } = getActiveCell(address);
     cellProp.fontSize = fontSize.value;
@@ -95,7 +95,7 @@ fontSize.addEventListener('click', (event) => {
     fontSize.value = cellProp.fontSize;
 })
 // fontfamily
-fontFamily.addEventListener('click', (event) => {
+fontFamily.addEventListener('change', (event) => {
     const address = addressInput.value;
     const { currentCell, cellProp } = getActiveCell(address);
     cellProp.fontFamily = fontFamily.value;
@@ -103,7 +103,7 @@ fontFamily.addEventListener('click', (event) => {
     fontFamily.value = cellProp.fontFamily;
 })
 // font color 
-fontColorPicker.addEventListener('mouseover', (event) => {
+fontColorPicker.addEventListener('change', (event) => {
     const address = addressInput.value;
     const { currentCell, cellProp } = getActiveCell(address);
     cellProp.textColor = fontColorPicker.value;
@@ -111,19 +111,110 @@ fontColorPicker.addEventListener('mouseover', (event) => {
     fontColorPicker.value = cellProp.textColor;
 });
 // bg color 
-bgColorPicker.addEventListener('click', (event) => {
+bgColorPicker.addEventListener('change', (event) => {
     const address = addressInput.value;
     const { currentCell, cellProp } = getActiveCell(address);
     cellProp.bgColor = bgColorPicker.value;
     currentCell.style.backgroundColor = cellProp.bgColor;
     fontColorPicker.value = cellProp.bgColor;
 });
-// leftalign Evenlistener
-leftAlignment.addEventListener('click', (event) => {
-    const address = addressInput.value;
-    const { currentCell, cellProp } = getActiveCell(address);
-    cellProp.alignment = 'left';
-    currentCell.style.textAlign = 'left';
-    leftAlignment.style.backgroundColor = cellProp.alignment === 'left' ? selectedProp : unselectedProp;
+// align Evenlistener
+
+alignment.forEach((alignElem) => {
+    alignElem.addEventListener('click', (event) => {
+        const address = addressInput.value;
+        const { currentCell, cellProp } = getActiveCell(address);
+        let alignValue = event.target.classList[0];
+        cellProp.alignment = alignValue;
+        currentCell.style.justifyContent = cellProp.alignment;
+        switch (alignValue) {
+            case ("left"): {
+                leftAlignment.style.backgroundColor = selectedProp;
+                centerAlignment.style.backgroundColor = unselectedProp;
+                rightAlignment.style.backgroundColor = unselectedProp;
+                break;
+            }
+            case ("center"): {
+                leftAlignment.style.backgroundColor = unselectedProp;
+                centerAlignment.style.backgroundColor = selectedProp;
+                rightAlignment.style.backgroundColor = unselectedProp;
+                break;
+            }
+            case ("right"): {
+                leftAlignment.style.backgroundColor = unselectedProp;
+                centerAlignment.style.backgroundColor = unselectedProp;
+                rightAlignment.style.backgroundColor = selectedProp;
+                break;
+            }
+        }
+    })
 })
+
+// this whole function makes help to hold the state of each cells 
+function addListenertoAttachCellProperties(cells, currentCell) {
+    currentCell.addEventListener('click', (event) => {
+        cells.forEach((cell) => cell.style.border = '1px #dfe4ea solid');
+        const rid = currentCell.getAttribute('rid');
+        const cid = currentCell.getAttribute('cid');
+        const cellProp = exceldb[rid][cid];
+        currentCell.style.border = '3px solid green'
+        // bold property state 
+        currentCell.style.fontWeight = cellProp.bold ? 'bold' : 'normal';
+        bold.style.backgroundColor = cellProp.bold ? selectedProp : unselectedProp;
+
+        // italic property state
+        currentCell.style.fontStyle = cellProp.italic ? 'italic' : 'normal';
+        italic.style.backgroundColor = cellProp.italic ? selectedProp : unselectedProp;
+
+        //underline property state
+        currentCell.style.textDecoration = cellProp.underline ? 'underline' : 'none';
+        underline.style.backgroundColor = cellProp.underline ? selectedProp : unselectedProp;
+
+        // fontsize property state
+        currentCell.style.fontSize = cellProp.fontSize + 'px';
+        fontSize.value = cellProp.fontSize;
+
+        //fontFamily property state
+        currentCell.style.fontFamily = cellProp.fontFamily;
+        fontFamily.value = cellProp.fontFamily;
+
+        // fontcolor property state
+        currentCell.style.color = cellProp.textColor;
+        fontColorPicker.value = cellProp.textColor;
+
+        //bgColor property state
+        currentCell.style.backgroundColor = cellProp.bgColor;
+        fontColorPicker.value = cellProp.bgColor;
+
+        // alignment
+        currentCell.style.justifyContent = cellProp.alignment;
+        switch (cellProp.alignment) {
+            case ("left"): {
+                leftAlignment.style.backgroundColor = selectedProp;
+                centerAlignment.style.backgroundColor = unselectedProp;
+                rightAlignment.style.backgroundColor = unselectedProp;
+                break;
+            }
+            case ("center"): {
+                leftAlignment.style.backgroundColor = unselectedProp;
+                centerAlignment.style.backgroundColor = selectedProp;
+                rightAlignment.style.backgroundColor = unselectedProp;
+                break;
+            }
+            case ("right"): {
+                leftAlignment.style.backgroundColor = unselectedProp;
+                centerAlignment.style.backgroundColor = unselectedProp;
+                rightAlignment.style.backgroundColor = selectedProp;
+                break;
+            }
+        }
+
+    })
+}
+// maintaining the state of the cells
+const cells = document.querySelectorAll('.cell');
+for (let i = 0; i < cells.length; i++) {
+    addListenertoAttachCellProperties(cells, cells[i]);
+}
+
 

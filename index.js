@@ -13,6 +13,7 @@ const addListenerForAddressBarDisplay = (cell, rowIndex, columnIndex) => {
         const rowNumber = rowIndex + 1;
         const columnName = String.fromCharCode(65 + columnIndex);
         addressInput.value = `${columnName}${rowNumber}`;
+        // cell border color
     })
 };
 for (let i = 0; i < rows; i++) {
@@ -44,4 +45,7 @@ for (let i = 0; i < rows; i++) {
     }
     cellContainer.appendChild(cellRow);
 }
+
+// const firstCell = document.querySelector(`.cell[rid=0][cid=0]`);
+// addListenerForAddressBarDisplay(firstCell, 0, 0);
 
